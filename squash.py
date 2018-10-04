@@ -5,6 +5,7 @@ import time
 
 H = 0
 V = 1
+bybyb = 3
 
 BLEU_CLAIR = (  0, 191, 200)
 JAUNE      = (255, 255,   0)
