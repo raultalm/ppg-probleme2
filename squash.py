@@ -109,7 +109,7 @@ def test_touche_bas(objet, hauteur_bas, point_bas, separe=True):
 
 
 def traite_entrees():
-    global fini, vies_restantes, pause, joue, ACTUAL_POWER_UP
+    global fini, vies_restantes, pause, joue
     for evenement in pygame.event.get():
         if delai:
             return
@@ -140,7 +140,7 @@ def traite_entrees():
 
 
 def anime():
-    global fini, vies_restantes, ACTUAL_POWER_UP
+    global fini, vies_restantes
     balle_position[H] = balle_position[H] + balle_vitesse[H]
     balle_position[V] = balle_position[V] + balle_vitesse[V]
 
@@ -162,7 +162,6 @@ def anime():
 
 
 def dessine_court():
-    global ACTUAL_POWER_UP
     fenetre.fill(BLEU_CLAIR)
     marquoir = police.render(str(score), True, BLEU)
     fenetre.blit(marquoir, (5 * FENETRE_LARGEUR // 8, FENETRE_HAUTEUR // 10))
@@ -228,7 +227,6 @@ def position_relative(rect):
 
 # rect represente un rectangle ((gauche, haut), (largeur, hauteur))
 def test_collision(rect):
-    global ACTUAL_POWER_UP
     ball_rect = pygame.Rect((balle_position[H] - BALLE_RAYON, balle_position[V] - BALLE_RAYON), (BALLE_DIAM, BALLE_DIAM))
     if ball_rect.colliderect(rect):
         rayon2 = BALLE_RAYON * BALLE_RAYON
@@ -279,7 +277,7 @@ def test_collision(rect):
 
 
 def augmente_score():
-    global score, vitesse_amplitude, balle_vitesse, ACTUAL_POWER_UP
+    global score, vitesse_amplitude, balle_vitesse
 
     score += 1
     if vitesse_amplitude < VITESSE_MAX and score % FRAPPES_AUGMENTATION_VITESSE == 0:
